@@ -28,10 +28,6 @@ const App = () => {
     setShowAnswer(!showAnswer);
   };
 
-  useEffect(() => {
-    localStorage.setItem("flash-cards", JSON.stringify(flashcards));
-  }, [flashcards]);
-
   const addOrEditFlashcard = (id) => {
     const newFlashCards = getClonedData(flashcards);
 
@@ -78,9 +74,9 @@ const App = () => {
         };
 
         newFlashCards[newId] = newQuestion;
-        setFlashcards(newFlashCards);
       }
 
+      setFlashcards(newFlashCards);
       updateLocalStorage(newFlashCards);
       setQuestion("");
       setAnswer("");
