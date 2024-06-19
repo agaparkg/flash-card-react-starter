@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 const getLocalStorageData = () =>
@@ -47,6 +47,7 @@ const App = () => {
   const deleteFlashcard = (id) => {
     const newFlashCards = getClonedData(flashcards);
     delete newFlashCards[id];
+    updateLocalStorage(newFlashCards);
     setFlashcards(newFlashCards);
   };
 
