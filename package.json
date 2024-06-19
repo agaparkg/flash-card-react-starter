@@ -5,12 +5,13 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
+    "bootstrap": "5.3.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "^5.0.0",
-    "bootstrap": "5.3.3"
+    "react-scripts": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react": "18.2.38",
     "@types/react-dom": "18.2.15",
     "loader-utils": "3.2.1",

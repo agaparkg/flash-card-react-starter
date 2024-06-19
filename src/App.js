@@ -7,6 +7,8 @@ const getLocalStorageData = () =>
 const updateLocalStorage = (data) =>
   localStorage.setItem("flash-cards", JSON.stringify(data));
 
+const getClonedData = (data) => JSON.parse(JSON.stringify(data));
+
 const App = () => {
   const [flashcards, setFlashcards] = useState(getLocalStorageData());
   const [showForm, setShowForm] = useState(false);
@@ -31,12 +33,12 @@ const App = () => {
   }, [flashcards]);
 
   const addOrEditFlashcard = (id) => {
-    const newFlashcards = { ...flashcards };
+    const newFlashCards = getClonedData(flashcards);
 
     if (id) {
       setQuestionId(id);
-      setQuestion(newFlashcards[id].question);
-      setAnswer(newFlashcards[id].answer);
+      setQuestion(newFlashCards[id].question);
+      setAnswer(newFlashCards[id].answer);
     } else {
       setQuestionId(null);
       setQuestion("");
@@ -47,9 +49,9 @@ const App = () => {
   };
 
   const deleteFlashcard = (id) => {
-    const newFlashcards = { ...flashcards };
-    delete newFlashcards[id];
-    setFlashcards(newFlashcards);
+    const newFlashCards = getClonedData(flashcards);
+    delete newFlashCards[id];
+    setFlashcards(newFlashCards);
   };
 
   const closeFormBtn = () => {
@@ -59,9 +61,9 @@ const App = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const newFlashCards = { ...flashcards };
+    const newFlashCards = getClonedData(flashcards);
 
-    if (question.trim() !== "" || answer.trim() !== "") {
+    if (question.trim() !== "" && answer.trim() !== "") {
       if (questionId) {
         newFlashCards[questionId].question = question;
         newFlashCards[questionId].answer = answer;
